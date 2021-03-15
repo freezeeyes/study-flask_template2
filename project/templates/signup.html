@@ -1,0 +1,29 @@
+{% extends 'base_auth.html' %}
+
+
+{% block title %}SignupForm{% endblock %}
+
+
+{% block content %}
+<form class="form-signin border" action="{{ url_for('auth.signup_post') }}" method="POST">
+    <img class="mb-4" src="/static/assets/account.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning" role="alert">{{ messages[0] }}</div>
+    {% endif %}
+    {% endwith %}
+
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input name="name" type="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input name="email" type="email" class="form-control" placeholder="Email address" required>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name="password" type="password" class="form-control" placeholder="Password" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <p class="text-center mt-3 mb-3"><a href="{{ url_for('auth.login') }}">sign in</a></p>
+    <!-- <p class="mt-1 mb-1 text-muted">&copy; 2021</p> -->
+</form>
+{% endblock %}
