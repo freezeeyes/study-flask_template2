@@ -8,5 +8,6 @@ mypage = Blueprint('mypage', __name__)
 @mypage.route('/profile')
 def profile():
     if 'uid' in session:
-        return render_template('profile.html')
+        return render_template('profile.html', name=session['name'])
+
     return redirect(url_for('auth.login'))
